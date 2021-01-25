@@ -156,7 +156,7 @@ app.post("/authorized_post_request", authMiddleWare, (req, res) => {
 app.use("/", authRouter);
 app.use("/", placeRouter);
 app.use("/", tipsRouter);
-
+app.use("/", likeRouter);
 // Listen for connections on specified port (default is port 4000)
 
 app.listen(PORT, () => {

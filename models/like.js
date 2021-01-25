@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       like.belongsTo(models.user);
-      like.belongsTo(models.place);
+      like.belongsTo(models.tip);
     }
   }
   like.init(
