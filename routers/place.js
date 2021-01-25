@@ -27,7 +27,7 @@ router.get("/places/:id", async (req, res, next) => {
   }
 });
 
-router.post("/places", async (req, res, next) => {
+router.post("/places", authMiddleware, async (req, res, next) => {
   try {
     const { name, description, city, photo } = req.body;
     if (!name) {
