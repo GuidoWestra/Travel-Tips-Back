@@ -9,7 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      user.hasMany(models.like);
+      user.hasMany(models.tip);
     }
   }
   user.init(
@@ -26,6 +27,9 @@ module.exports = (sequelize, DataTypes) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      photo: {
+        type: DataTypes.STRING,
       },
     },
     {
