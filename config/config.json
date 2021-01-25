@@ -1,8 +1,7 @@
 {
   "development": {
-    "url": "YOUR_ELEPHANTSQL_URL_HERE",
-    "dialect": "postgres",
-    "operatorsAliases": "0"
+    "url": "postgres://hwuzbfwr:PmOALIYuLVJmcqMYH2b8WZzxLDGImCwY@kandula.db.elephantsql.com:5432/hwuzbfwr",
+    "dialect": "postgres"
   },
   "test": {
     "username": "root",
