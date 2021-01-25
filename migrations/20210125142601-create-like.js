@@ -11,10 +11,18 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "users",
+          key: "id",
+        },
       },
       tipId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "tips",
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,

@@ -11,6 +11,10 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "users",
+          key: "id",
+        },
       },
       userName: {
         type: Sequelize.STRING,
@@ -19,6 +23,10 @@ module.exports = {
       placeId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        references: {
+          model: "places",
+          key: "id",
+        },
       },
       text: {
         type: Sequelize.TEXT,
