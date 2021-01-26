@@ -11,7 +11,9 @@ router.get("/tips/:placeId", async (req, res, next) => {
   try {
     const placeId = req.params.placeId;
 
-    const result = await Tip.findAll({ where: { placeId } });
+    const result = await Tip.findAll({
+      where: { placeId },
+    });
 
     if (!result.length)
       return res.status(404).send({ message: "No Tips found" });
