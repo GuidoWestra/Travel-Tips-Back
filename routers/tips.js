@@ -1,15 +1,25 @@
 const { Router } = require("express");
-const { toJWT } = require("../auth/jwt");
+
 const authMiddleware = require("../auth/middleware");
-const User = require("../models/").user;
+
 const Tip = require("../models/").tip;
+const Like = require("../models").like;
 
 const router = new Router();
 
 router.get("/tips/:placeId", async (req, res, next) => {
   try {
     const placeId = req.params.placeId;
-    const result = await Tip.findAll({ where: { placeId } });
+    const result = await Tip.findAll(
+      { where: { placeId } },
+      {
+        include: [
+          {
+            model: Like,
+          },
+        ],
+      }
+    );
 
     if (!result.length)
       return res.status(404).send({ message: "No Tips found" });
