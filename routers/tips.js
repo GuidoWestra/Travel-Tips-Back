@@ -48,12 +48,25 @@ router.get("/tips/:placeId", async (req, res, next) => {
 router.get("/user/tips", authMiddleware, async (req, res, next) => {
   try {
     const { id } = req.user;
-    const result = await Tip.findAll({ where: { userId: id } });
+    const result = await Tip.findAll({
+      where: { userId: id },
+      order: [["createdAt", "DESC"]],
+      include: [{ model: User }, { model: Place }],
+    });
 
     if (!result.length)
       return res.status(404).send({ message: "No Tips found" });
-    if (result)
-      return res.status(200).send({ message: "Tips fetched!", data: result });
+    if (result) {
+      const userTips = result.map((x) => ({
+        id: x.id,
+        placeId: x.placeId,
+        placeName: x.place.name,
+        placeCity: x.place.city,
+        text: x.text,
+        date: x.createdAt,
+      }));
+      return res.status(200).send({ message: "Tips fetched!", data: userTips });
+    }
   } catch (e) {
     return res
       .status(400)
