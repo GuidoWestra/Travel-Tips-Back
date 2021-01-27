@@ -1,4 +1,4 @@
-# Chefs-Choice-Back
+# Travel-Tips-Back
 :deciduous_tree: Back-end Repository of the Travel.Tips <br />
 :checkered_flag: Deployed to heroku on <br />
 # :wrench:Instructions: 
