@@ -1,6 +1,6 @@
 # Chefs-Choice-Back
 :deciduous_tree: Back-end Repository of the Travel.Tips <br />
-:checkered_flag: //Deployed to heroku on <br />
+:checkered_flag: Deployed to heroku on <br />
 # :wrench:Instructions: 
 ## backend-db runs on sequelize-cli. 
 - npx sequelize-cli db:migrate
@@ -29,4 +29,5 @@ used endpoints:
 - Running npm run dev, starts the server with nodemon <br />
 <br />
 <br />
-:computer: Link to front end: https://github.com/GuidoWestra/Travel-Tips-Front
+:computer: Link to front end: https://github.com/GuidoWestra/Travel-Tips-Front <br />
+:paperclip: Link to Heroku: LINK HERE <br />
