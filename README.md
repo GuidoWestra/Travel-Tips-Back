@@ -1,13 +1,13 @@
 # Travel-Tips-Back
 :deciduous_tree: Back-end Repository of the Travel.Tips <br />
 :checkered_flag: Deployed to heroku on <br />
-# :wrench:Instructions: 
-## backend-db runs on sequelize-cli. 
+## :wrench:Instructions: 
+### backend-db runs on sequelize-cli. 
 - npx sequelize-cli db:migrate
 - npx sequelize-cli db:seed:all <br/>
 :warning:Hard reset.
 - npx sequelize-cli db:migrate:undo:all<br/>
-## server runs on express: 
+### server runs on express: 
 used endpoints: 
 ### places <br />
   - (get)/list  <br />
