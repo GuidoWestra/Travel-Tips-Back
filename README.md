@@ -24,7 +24,9 @@ used endpoints:
   - (delete)/tip/:tipId <br />
 <br />
 <br />
-running npm start, starts the server. 
+### Start Server 
+- Running npm start, starts the server with node. <br />
+- Running npm run dev, starts the server with nodemon <br />
 <br />
 <br />
-Link to front end: https://github.com/GuidoWestra/Travel-Tips-Front
+:computer: Link to front end: https://github.com/GuidoWestra/Travel-Tips-Front
