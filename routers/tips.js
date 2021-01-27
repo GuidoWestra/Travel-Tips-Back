@@ -5,6 +5,7 @@ const authMiddleware = require("../auth/middleware");
 const Tip = require("../models/").tip;
 const Like = require("../models").like;
 const User = require("../models").user;
+const Place = require("../models").place;
 
 const router = new Router();
 
@@ -15,8 +16,10 @@ router.get("/tips/:placeId", async (req, res, next) => {
     const result = await Tip.findAll({
       where: { placeId },
       order: [["createdAt", "DESC"]],
-      include: [User],
+      include: [{ model: User }, { model: Place }],
     });
+
+    console.log("this is result", result);
 
     if (!result.length)
       return res.status(404).send({ message: "No Tips found" });
@@ -25,6 +28,8 @@ router.get("/tips/:placeId", async (req, res, next) => {
       const tipsWithPhoto = result.map((x) => ({
         id: x.id,
         placeId: x.placeId,
+        placeName: x.place.name,
+        placeCity: x.place.city,
         userName: x.user.name,
         text: x.text,
         userPhoto: x.user.photo,
