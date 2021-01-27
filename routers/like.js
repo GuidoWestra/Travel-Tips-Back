@@ -17,10 +17,13 @@ router.get("/likes", async (req, res, next) => {
     return res.status(400).send({ message: "Something went wrong in /likes" });
   }
 });
-router.post("/likes/:tipId", authMiddleware, async (req, res, next) => {
+router.post("/likes/add", authMiddleware, async (req, res, next) => {
   try {
-    const tipId = req.params.tipId;
+    const { tipId } = req.body;
     const { id } = req.user;
+
+    console.log(`tip id, user id`, tipId, id);
+
     const like = await Like.findOne({ where: { userId: id, tipId: tipId } });
     if (like)
       return res.status(400).send({ message: "User already liked this" });
