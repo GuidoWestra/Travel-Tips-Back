@@ -22,6 +22,10 @@ used endpoints:
   - (get) /user/tips    <br />
   - (post)/tips         <br />
   - (delete)/tip/:tipId <br />
+### auth <br />
+  - (post)/login <br />
+  - (post)/signup <br />
+  - (put) /updateUserImage <br />
 <br />
 <br />
 ### Start Server 
