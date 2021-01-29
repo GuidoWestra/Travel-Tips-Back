@@ -12,7 +12,9 @@ router.post("/login", async (req, res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).send({ message: "Please provide both email and password" });
+      return res
+        .status(400)
+        .send({ message: "Please provide both email and password" });
     }
 
     const user = await User.findOne({ where: { email } });
@@ -53,8 +55,37 @@ router.post("/signup", async (req, res) => {
     res.status(201).json({ token, ...newUser.dataValues });
   } catch (error) {
     if (error.name === "SequelizeUniqueConstraintError") {
-      return res.status(400).send({ message: "There is an existing account with this email" });
+      return res
+        .status(400)
+        .send({ message: "There is an existing account with this email" });
     }
+
+    return res.status(400).send({ message: "Something went wrong, sorry" });
+  }
+});
+
+router.put("/updateUserImage", authMiddleware, async (req, res) => {
+  const { id } = req.user;
+  const { photo } = req.body;
+
+  console.log("photo", photo);
+  console.log("id", id);
+
+  if (!photo) {
+    return res.status(400).send("Please provide photo");
+  }
+
+  try {
+    const user = await User.findByPk(id);
+    if (!user) {
+      res.status(404).send({ message: "User not found" });
+    }
+    console.log("user id", user);
+    const updatedUser = await user.update({ photo: photo });
+    delete updatedUser.dataValues["password"]; // don't send back the password hash
+    res.status(201).json({ ...updatedUser.dataValues });
+  } catch (error) {
+    console.log(error.message);
 
     return res.status(400).send({ message: "Something went wrong, sorry" });
   }
