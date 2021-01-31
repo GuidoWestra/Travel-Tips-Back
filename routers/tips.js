@@ -55,7 +55,7 @@ router.get("/user/tips", authMiddleware, async (req, res, next) => {
     });
 
     if (!result.length)
-      return res.status(404).send({ message: "No Tips found" });
+      return res.status(200).send({ message: "No Tips found" });
     if (result) {
       const userTips = result.map((x) => ({
         id: x.id,
